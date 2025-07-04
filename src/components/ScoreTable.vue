@@ -1,8 +1,10 @@
 <script setup>
-
+const dice = defineModel();
 </script>
 
 <template>
+    <p>{{ dice }}</p>
+
     <table>
         <tr>
             <td>ENEN</td>
