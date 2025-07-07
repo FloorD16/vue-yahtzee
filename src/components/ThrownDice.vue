@@ -4,21 +4,15 @@ import { ref } from 'vue'
 const dice = ref([]);
 const emit = defineEmits(['diceValues']);
 
-const emitDice = () => {
-  emit('diceValues', dice.value);
-};
-
 const rollDice = () => {
-  dice.value = [];
-  let roll;
 
-  for (let i=1; i<6; i++) {
-    roll = Math.floor(Math.random()*6) + 1;
-    dice.value.push(roll);
+  dice.value = [];
+ 
+  for (let i = 1; i < 6; i++) {
+    dice.value.push(Math.floor(Math.random()*6) + 1);
   }
 
-  emitDice();
-
+  emit('diceValues', dice.value);
 }
 
 </script>
