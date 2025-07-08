@@ -25,14 +25,20 @@ const rollDice = () => {
   <table>
     <tbody>
       <tr>
-        <td id="dobbelstenen" v-for="(die, index) in dice" :key="index">{{ die }}</td>
+        <td v-for="(die, index) in dice" :key="index">{{ die }}</td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <style scoped>
-#dobbelstenen {
+table {
+  border-collapse: collapse;
+  margin: 15px;
+  margin-left: 50px;
+}
+
+td {
   width: 15px;
   height: 15px;
   border: 2px solid black;
