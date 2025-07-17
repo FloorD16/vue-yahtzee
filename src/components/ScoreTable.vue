@@ -1,22 +1,24 @@
 <script setup>
-import { ref, watch, computed } from 'vue';
+import {  computed } from 'vue';
 
 const dice = defineModel();
-const upperPart = ref([]);
 
-watch(dice, (newDice) => {
-    upperPart.value = [{key:1, name:'ENEN', frequency:0}, 
+const upperPart = computed(() => {
+    let count = [
+        {key:1, name:'ENEN', frequency:0}, 
         {key:2, name:'TWEEËN', frequency:0}, 
         {key:3, name:'DRIEËN', frequency:0}, 
         {key:4, name:'VIEREN', frequency:0}, 
         {key:5, name:'VIJVEN', frequency:0}, 
-        {key:6, name:'ZESSEN', frequency:0}];
+        {key:6, name:'ZESSEN', frequency:0}
+    ];
     
-    for (let die of newDice) {
-        upperPart.value[die-1].frequency++;
+    for (let die of dice.value) {
+        count[die-1].frequency++;
     }
-
-}, {immediate: true});
+    
+    return count
+})
 
 const totalUpperPartNoBonus = computed(() => {
     return upperPart.value.reduce((sum, item) => sum + item.key*item.frequency, 0);
